@@ -45,7 +45,7 @@ namespace mjf
 		Rect _ball;
 		int _rightScore;
 		int _leftScore;
-		int time = 9;
+		int time = 90;
 	};
 
 	Pong::Pong() = default;
