@@ -14,6 +14,7 @@ namespace mjf
 		void moveBall(float x, float y);
 		void respawnBall();
 		void tick();
+		void reduceTime();
 
 	public:
 		const float* getRightPaddleArr() const;
@@ -27,6 +28,7 @@ namespace mjf
 		const Rect& getBall() const;
 		int getRightScore() const;
 		int getLeftScore() const;
+		int getTime() const;
 
 	public:
 		bool ballHasCollisionWithLeftPaddle() const;
@@ -43,6 +45,7 @@ namespace mjf
 		Rect _ball;
 		int _rightScore;
 		int _leftScore;
+		int time = 9;
 	};
 
 	Pong::Pong() = default;
@@ -116,6 +119,11 @@ namespace mjf
 		return _leftScore;
 	}
 
+	inline int Pong::getTime() const
+	{
+		return time;
+	}
+
 	inline bool Pong::ballHasCollisionWithLeftPaddle() const
 	{
 		float ballX = _ball.getOrigin().x;
@@ -144,6 +152,13 @@ namespace mjf
 		}
 
 		return true;
+	}
+
+	inline void Pong::reduceTime()
+	{
+		time--;
+		if (time < 0)
+			time = 0;
 	}
 
 	inline bool Pong::ballHasCollisionWithRightPaddle() const

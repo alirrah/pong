@@ -14,6 +14,14 @@
 
 using namespace std;
 
+
+void blink(int value) {
+	pong.reduceTime();
+	renderTexts();
+	glutPostRedisplay();
+	glutTimerFunc(1000, blink, 0);
+}
+
 int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
@@ -90,7 +98,7 @@ int main(int argc, char** argv)
 	glutKeyboardUpFunc(keyboardUpHandler);
 
 	glutDisplayFunc(display);
-
+	glutTimerFunc(1000, blink, 0);
 	glutMainLoop();
 
 	return 0;
